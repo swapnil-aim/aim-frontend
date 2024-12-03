@@ -8,8 +8,9 @@ export default class AxiosUtil {
         this.routerStore = routerStore;
     }
 
-    async get(endpoint, options = {}) {
+    async get(endpoint, params={}, options = {}) {
         Object.assign(options, this._getCommonOptions());
+        options.params = params;
         return axios.get(`${this.BASE_URL}/${endpoint}`, options)
             .catch(error => this._handleHttpError(error));
     }

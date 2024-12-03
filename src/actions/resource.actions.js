@@ -1,8 +1,8 @@
 import AxiosUtil from "../utils/axios-util";
 
 export default class ResourceActions extends AxiosUtil {
-    fetchResources() {
-        return this.get('resources');
+    fetchResources(subjectId) {
+        return this.get('resources', {subjectId});
     }
     createResource(subjectId,name, instructor, course) {
         return this.post('resources', {

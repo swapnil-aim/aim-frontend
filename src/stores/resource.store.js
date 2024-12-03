@@ -12,8 +12,8 @@ export default class ResourceStore {
         this.resourceActions = resourceActions;
     }
 
-    async fetchResources() {
-        const result = await this.resourceActions.fetchResources();
+    async fetchResources(subjectId) {
+        const result = await this.resourceActions.fetchResources(subjectId);
         if (result) {
             this.resources = result.data;
         }

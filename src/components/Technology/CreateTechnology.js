@@ -20,24 +20,24 @@ const FormContainer = styled.div`
   border-radius: 5px;
 `;
 
-class CreateResource extends Component {
+class CreateTechnology extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             name: '',
-            instructor: '',
-            course: '',
+            resource:'',
             errorMessage: null,
         };
     }
 
-    handleSubmitResource = async () => {
-        const { resourceStore, subjectId, subjectName } = this.props;
-        const { name, instructor, course } = this.state;
+    handleSubmitTechnology = async () => {
+        const {
+            technologyStore,
+        } = this.props;
+        const { name, resource } = this.state;
         try {
-            await resourceStore.createResource(subjectId, name, instructor, course);
-            window.location.hash = `${subjectName}/${subjectId}/resources`;
+            await technologyStore.createTechnology(name, resource);
+            window.location.hash = `/technologies`;
         } catch (error) {
             const errorMessage = error.message;
             this.setState({ errorMessage });
@@ -48,7 +48,7 @@ class CreateResource extends Component {
         return (
             <FormWrapper>
                 <FormContainer>
-                    <h1 style={{color: '#1976d2'}}>Create A New Resource</h1>
+                    <h1 style={{color: '#1976d2'}}>Add A New Technology</h1>
                     { this.state.errorMessage && <ErrorMessage message={this.state.errorMessage} />}
 
                     <FormControl fullWidth>
@@ -68,8 +68,9 @@ class CreateResource extends Component {
                             }}
                             onChange={e => this.setState({ name: e.target.value })}
                         />
+
                         <TextField
-                            label="Instructor"
+                            label="Resource"
                             placeholder=""
                             margin="normal"
                             variant="outlined"
@@ -82,33 +83,16 @@ class CreateResource extends Component {
                                     '&.Mui-focused fieldset': { borderColor: '#61dafb' }, // Focused border color (light blue)
                                 },
                             }}
-                            onChange={e => this.setState({ instructor: e.target.value })}
-                        />
-                        <TextField
-                            label="Course"
-                            placeholder=""
-                            margin="normal"
-                            variant="outlined"
-                            sx={{
-                                '& label': { color: '#ffffff' },                  // Label color (white)
-                                '& input': { color: '#ffffff' },                  // Input text color (white)
-                                '& .MuiOutlinedInput-root': {
-                                    '& fieldset': { borderColor: '#ffffff' },       // Default border color (white)
-                                    '&:hover fieldset': { borderColor: '#61dafb' }, // Hover border color (light blue)
-                                    '&.Mui-focused fieldset': { borderColor: '#61dafb' }, // Focused border color (light blue)
-                                },
-                            }}
-                            onChange={e => this.setState({ course: e.target.value })}
+                            onChange={e => this.setState({ resource: e.target.value })}
                         />
                     </FormControl>
                     <Button
                         style={{ marginTop: '10px' }}
                         fullWidth
                         variant="contained"
-                        color="primary"
-                        onClick={this.handleSubmitResource}
+                        onClick={this.handleSubmitTechnology}
                     >
-                        CREATE RESOURCE
+                        ADD TECHNOLOGY
                     </Button>
                 </FormContainer>
             </FormWrapper>
@@ -116,4 +100,4 @@ class CreateResource extends Component {
     }
 }
 
-export default inject("resourceStore")(observer(CreateResource));
+export default inject("technologyStore")(observer(CreateTechnology));

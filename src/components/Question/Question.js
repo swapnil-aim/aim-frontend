@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import {
     Card,
     CardContent,
@@ -17,31 +16,29 @@ const CardTitle = styled.h1`
 `;
 
 
-class Chapter extends Component {
+class Question extends Component {
     render() {
         const { id,
-            name,
+            title,
+            description,
             subject_name,
             subject_id,
             resource_name,
             resource_id,
+            chapter_id,
+            chapter_name,
             completed,
         } = this.props;
         return (
             <CardContainer>
                 <Card key={id} sx={{ marginBottom: 2 }}>
-                    <Link to={`/${subject_name}/${subject_id}/${resource_name}/${resource_id}/${name}/${id}/questions`} style={{
-                        textDecoration: 'none',
-                        color: 'black',
-                    }}>
                         <CardContent>
-                            <CardTitle style={{ color: completed ? 'red' : 'black' }}>{ name }</CardTitle>
+                            <CardTitle style={{ color: completed ? 'red' : 'black' }}>{ title }</CardTitle>
                         </CardContent>
-                    </Link>
                 </Card>
             </CardContainer>
         );
     }
 }
 
-export default inject('chapterStore')(observer(Chapter));
+export default inject('questionStore')(observer(Question));

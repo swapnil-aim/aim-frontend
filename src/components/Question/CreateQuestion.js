@@ -20,24 +20,28 @@ const FormContainer = styled.div`
   border-radius: 5px;
 `;
 
-class CreateResource extends Component {
+class CreateQuestion extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            name: '',
-            instructor: '',
-            course: '',
+            title: '',
+            description:'',
             errorMessage: null,
         };
     }
 
-    handleSubmitResource = async () => {
-        const { resourceStore, subjectId, subjectName } = this.props;
-        const { name, instructor, course } = this.state;
+    handleSubmitQuestion = async () => {
+        const {
+            questionStore,
+            subject_id: subjectId,
+            resource_id: resourceId,
+            chapter_id: chapterId,
+        } = this.props;
+        const { title, description } = this.state;
         try {
-            await resourceStore.createResource(subjectId, name, instructor, course);
-            window.location.hash = `${subjectName}/${subjectId}/resources`;
+            console.log(title, description);
+            await questionStore.createQuestion(title, description, subjectId, resourceId, chapterId);
+            window.location.hash = `${this.props.subject_name}/${this.props.subject_id}/${this.props.resource_name}/${this.props.resource_id}/${this.props.chapter_name}/${this.props.chapter_id}/questions`;
         } catch (error) {
             const errorMessage = error.message;
             this.setState({ errorMessage });
@@ -48,12 +52,12 @@ class CreateResource extends Component {
         return (
             <FormWrapper>
                 <FormContainer>
-                    <h1 style={{color: '#1976d2'}}>Create A New Resource</h1>
+                    <h1 style={{color: '#1976d2'}}>Add A New Question</h1>
                     { this.state.errorMessage && <ErrorMessage message={this.state.errorMessage} />}
 
                     <FormControl fullWidth>
                         <TextField
-                            label="Name"
+                            label="Title"
                             placeholder=""
                             margin="normal"
                             variant="outlined"
@@ -66,10 +70,11 @@ class CreateResource extends Component {
                                     '&.Mui-focused fieldset': { borderColor: '#61dafb' }, // Focused border color (light blue)
                                 },
                             }}
-                            onChange={e => this.setState({ name: e.target.value })}
+                            onChange={e => this.setState({ title: e.target.value })}
                         />
+
                         <TextField
-                            label="Instructor"
+                            label="Description"
                             placeholder=""
                             margin="normal"
                             variant="outlined"
@@ -82,33 +87,18 @@ class CreateResource extends Component {
                                     '&.Mui-focused fieldset': { borderColor: '#61dafb' }, // Focused border color (light blue)
                                 },
                             }}
-                            onChange={e => this.setState({ instructor: e.target.value })}
+                            onChange={e => this.setState({ description: e.target.value })}
                         />
-                        <TextField
-                            label="Course"
-                            placeholder=""
-                            margin="normal"
-                            variant="outlined"
-                            sx={{
-                                '& label': { color: '#ffffff' },                  // Label color (white)
-                                '& input': { color: '#ffffff' },                  // Input text color (white)
-                                '& .MuiOutlinedInput-root': {
-                                    '& fieldset': { borderColor: '#ffffff' },       // Default border color (white)
-                                    '&:hover fieldset': { borderColor: '#61dafb' }, // Hover border color (light blue)
-                                    '&.Mui-focused fieldset': { borderColor: '#61dafb' }, // Focused border color (light blue)
-                                },
-                            }}
-                            onChange={e => this.setState({ course: e.target.value })}
-                        />
+
+
                     </FormControl>
                     <Button
                         style={{ marginTop: '10px' }}
                         fullWidth
                         variant="contained"
-                        color="primary"
-                        onClick={this.handleSubmitResource}
+                        onClick={this.handleSubmitQuestion}
                     >
-                        CREATE RESOURCE
+                        ADD QUESTION
                     </Button>
                 </FormContainer>
             </FormWrapper>
@@ -116,4 +106,4 @@ class CreateResource extends Component {
     }
 }
 
-export default inject("resourceStore")(observer(CreateResource));
+export default inject("questionStore")(observer(CreateQuestion));

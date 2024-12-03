@@ -1,10 +1,17 @@
 import AxiosUtil from "../utils/axios-util";
 
 export default class QuestionActions extends AxiosUtil {
-    fetchQuestions() {
-        return this.get('questions');
+    fetchQuestions(subjectId, resourceId, chapterId) {
+        return this.get('questions', {subjectId, resourceId, chapterId});
     }
-    createQuestion(name) {
-        return this.post('questions', {name});
+    createQuestion(title, description, subjectId, resourceId, chapterId) {
+        console.log(title, description, subjectId, resourceId, chapterId);
+        return this.post('questions', {
+            title,
+            description,
+            subject_id:subjectId,
+            resource_id:resourceId,
+            chapter_id: chapterId
+        });
     }
 }

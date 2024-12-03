@@ -12,8 +12,8 @@ export default class ChapterStore {
         this.chapterActions = chapterActions;
     }
 
-    async fetchChapters() {
-        const result = await this.chapterActions.fetchChapters();
+    async fetchChapters(subjectId, resourceId) {
+        const result = await this.chapterActions.fetchChapters(subjectId, resourceId);
         if (result) {
             this.chapters = result.data;
         }

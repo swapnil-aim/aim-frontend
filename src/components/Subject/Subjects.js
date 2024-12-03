@@ -49,7 +49,7 @@ class Subjects extends Component {
       );
     }
     return subjects.map((subject) => (
-      <Subject key={subject.id} id={subject.id} name={subject.name} />
+      <Subject key={subject.id} id={subject.id} name={subject.name} completed={subject.completed} />
     ));
   }
   render() {

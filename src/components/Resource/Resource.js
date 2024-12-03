@@ -23,6 +23,7 @@ class Resource extends Component {
             name,
             subject_name,
             subject_id,
+            completed,
         } = this.props;
         return (
             <CardContainer>
@@ -32,7 +33,7 @@ class Resource extends Component {
                         color: 'black',
                     }}>
                         <CardContent>
-                            <CardTitle>{ name }</CardTitle>
+                            <CardTitle style={{ color: completed ? 'red' : 'black' }} >{ name }</CardTitle>
                         </CardContent>
                     </Link>
                 </Card>

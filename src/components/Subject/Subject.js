@@ -19,7 +19,7 @@ const CardTitle = styled.h1`
 
 class Subject extends Component {
     render() {
-        const { id, name } = this.props;
+        const { id, name, completed } = this.props;
 
         return (
             <CardContainer>
@@ -29,35 +29,9 @@ class Subject extends Component {
                         color: 'black'
                     }}>
                     <CardContent>
-                        <CardTitle>{ name }</CardTitle>
+                        <CardTitle style={{ color: completed ? 'red' : 'black' }}>{ name }</CardTitle>
                     </CardContent>
                     </Link>
-                    {/*<CardActions style={{ padding: '14px' }} disableSpacing>*/}
-                    {/*    <Grid*/}
-                    {/*        justify="space-between" // Add it here :)*/}
-                    {/*        container*/}
-                    {/*    >*/}
-                    {/*        <Grid item>*/}
-                    {/*            <FormControl style={{ width: '140px' }}>*/}
-                    {/*                <Select*/}
-                    {/*                    value={this.props.status}*/}
-                    {/*                    onChange={this.handleStatusChange}*/}
-                    {/*                    displayEmpty*/}
-                    {/*                >*/}
-                    {/*                    <MenuItem value={'OPEN'}>Open</MenuItem>*/}
-                    {/*                    <MenuItem value={'IN_PROGRESS'}>In Progress</MenuItem>*/}
-                    {/*                    <MenuItem value={'DONE'}>Done</MenuItem>*/}
-                    {/*                </Select>*/}
-                    {/*            </FormControl>*/}
-                    {/*        </Grid>*/}
-
-                    {/*        <Grid item>*/}
-                    {/*            <IconButton onClick={this.deleteTask}>*/}
-                    {/*                <DeleteIcon color="error" />*/}
-                    {/*            </IconButton>*/}
-                    {/*        </Grid>*/}
-                    {/*    </Grid>*/}
-                    {/*</CardActions>*/}
                 </Card>
             </CardContainer>
         );

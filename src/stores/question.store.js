@@ -12,14 +12,15 @@ export default class QuestionStore {
         this.questionActions = questionActions;
     }
 
-    async fetchQuestions() {
-        const result = await this.questionActions.fetchQuestions();
+    async fetchQuestions(subjectId, resourceId, chapterId) {
+        const result = await this.questionActions.fetchQuestions(subjectId, resourceId, chapterId);
         if (result) {
             this.questions = result.data;
         }
     }
-    async createQuestion(name, subjectId, resourceId) {
-        const result = await this.questionActions.createQuestion(name, subjectId, resourceId);
+    async createQuestion(title, description, subjectId, resourceId, chapterId) {
+        console.log(title, description, subjectId, resourceId, chapterId);
+        const result = await this.questionActions.createQuestion(title, description, subjectId, resourceId, chapterId);
         if (result) {
             this.questions.push(result.data);
         }

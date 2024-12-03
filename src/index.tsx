@@ -12,6 +12,8 @@ import ResourceStore from "./stores/resource.store";
 import ResourceActions from "./actions/resource.actions";
 import ChapterActions from "./actions/chapter.actions";
 import ChapterStore from "./stores/chapter.store";
+import TechnologyStore from "./stores/technology.store";
+import TechnologyActions from "./actions/technologies.actions"
 
 
 
@@ -20,21 +22,26 @@ const actions: {
     questionActions?:QuestionActions,
     resourceActions?:ResourceActions,
     chapterActions?:ChapterActions,
+    technologyActions?:TechnologyActions,
 } = {};
 const stores: {
     subjectStore?:SubjectStore,
     resourceStore?:ResourceStore,
     questionStore?:QuestionStore,
     chapterStore?:ChapterStore,
+    technologyStore?:TechnologyStore,
 } = {};
 actions.subjectActions = new SubjectActions();
 actions.resourceActions = new ResourceActions();
 actions.questionActions = new QuestionActions();
 actions.chapterActions = new ChapterActions();
+actions.technologyActions = new TechnologyActions();
 stores.subjectStore = new SubjectStore(actions.subjectActions);
 stores.resourceStore = new ResourceStore(actions.resourceActions);
 stores.questionStore = new QuestionStore(actions.questionActions);
 stores.chapterStore = new ChapterStore(actions.chapterActions);
+stores.technologyStore = new TechnologyStore(actions.technologyActions);
+
 const root = (
     <Provider {...stores}>
         <App />

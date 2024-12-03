@@ -38,7 +38,7 @@ const ChaptersContainer = styled.div`
 
 class Chapters extends Component {
     async componentDidMount() {
-        await this.props.chapterStore.fetchChapters();
+        await this.props.chapterStore.fetchChapters(this.props.subject_id, this.props.resource_id);
     }
 
     renderChapters() {
@@ -66,6 +66,7 @@ class Chapters extends Component {
                 subject_id={subject_id}
                 resource_name={resource_name}
                 resource_id={resource_id}
+                completed={chapter.completed}
             />
         ));
     }

@@ -37,8 +37,7 @@ const ResourcesContainer = styled.div`
 
 class Resources extends Component {
     async componentDidMount() {
-        const { id , subjectName} = this.props;
-        await this.props.resourceStore.fetchResources();
+        await this.props.resourceStore.fetchResources(this.props.subjectId);
     }
 
     renderResources() {
@@ -58,6 +57,7 @@ class Resources extends Component {
                 name={resource.name}
                 subject_name={this.props.subjectName}
                 subject_id={this.props.subjectId}
+                completed={resource.completed}
             />
         ));
     }

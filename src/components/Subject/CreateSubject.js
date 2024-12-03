@@ -35,7 +35,7 @@ class CreateSubject extends Component {
         const { name } = this.state;
         try {
             await subjectStore.createSubject(name);
-            window.location.hash = '/';
+            window.location.hash = '/subjects';
         } catch (error) {
             console.log(error);
             const errorMessage = error.message;
