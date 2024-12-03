@@ -4,13 +4,13 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 const schedule = {
-    Monday: ['AWS', 'Finance Book', 'Kannada', 'Normal Book', 'Coding - 4 Questions', 'Ukelele', 'Table Tennis Shadow', 'Ukelele Practice'],
-    Tuesday: ['System Design', 'Finance Book', 'Kannada', 'Normal Book', 'Coding - 4 Questions', 'Ukelele', 'Table Tennis Shadow', 'Ukelele Practice'],
-    Wednesday: ['LLD', 'Finance Book', 'Kannada', 'Normal Book', 'Coding - 4 Questions', 'Ukelele', 'Table Tennis Shadow', 'Ukelele Practice'],
-    Thursday: ['Technology', 'Finance Book', 'Kannada', 'Normal Book', 'Coding - 4 Questions', 'Ukelele', 'Table Tennis Shadow', 'Ukelele Practice'],
-    Friday: ['Coding', 'Finance Book', 'Kannada', 'Normal Book', 'Coding - 4 Questions', 'Ukelele', 'Table Tennis Shadow', 'Ukelele Practice'],
-    Saturday: ['AWS', 'Finance Book', 'Kannada', 'Normal Book', 'Coding - 4 Questions', 'Ukelele', 'Table Tennis Shadow', 'Ukelele Practice'],
-    Sunday: ['AWS', 'Finance Book', 'Kannada', 'Normal Book', 'Coding - 4 Questions', 'Ukelele', 'Table Tennis Shadow', 'Ukelele Practice']
+    Monday: ['AWS', 'Kannada', 'Finance Book', 'Normal Book', 'Coding - 4 Questions', 'Gym', 'Ukelele - Learn A Song', 'TT Shadow'],
+    Tuesday: ['System Design', 'Kannada', 'Finance Book', 'Normal Book', 'Coding - 4 Questions', 'Gym', 'Swimming - Videos', 'Ukelele Practice'],
+    Wednesday: ['LLD', 'Kannada', 'Finance Book', 'Normal Book', 'Coding - 4 Questions', 'Gym', 'Badminton-Videos', 'TT Shadow'],
+    Thursday: ['Technology', 'Kannada', 'Finance Book', 'Normal Book', 'Coding - 4 Questions', 'Gym', 'TT Shadow', 'Ukelele Practice'],
+    Friday: ['Swimming class', 'Kannada Class', 'System Design', 'Coding - 4 Questions', 'Kannada', 'Finance Book','Ukelele Practice'],
+    Saturday: ['Swimming class', 'TT class', 'Kannada class', 'Coding - 4 questions', 'Algo Trading', 'Revision'],
+    Sunday: ['Swimming class', 'TT class', 'Kannada class', 'Technology', 'Coding - 4 Questions', 'Algo Trading'],
 };
 
 const WeeklyRoutine = () => {

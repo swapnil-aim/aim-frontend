@@ -67,7 +67,7 @@ class Questions extends Component {
             <Question
                 key={question.id}
                 id={question.id}
-                name={question.title}
+                title={question.title}
                 description={question.description}
                 subject_name={subject_name}
                 subject_id={subject_id}
